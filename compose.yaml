@@ -17,7 +17,7 @@ services:
     volumes:
       - database_data:/var/lib/mysql:rw
     networks:
-    - demo
+    - gsbveto
 ###< doctrine/doctrine-bundle ###
 
   phpmyadmin:
@@ -34,7 +34,7 @@ services:
     volumes:
       - /sessions
     networks:
-    - demo
+    - gsbveto
 
   php:
     image: ${PROJECT_NAME:-}app-php
@@ -70,10 +70,10 @@ services:
         published: ${HTTP3_PORT:-443}
         protocol: udp
     networks:
-    - demo
+    - gsbveto
 
 networks:
-  demo:
+  gsbveto:
 
 volumes:
   caddy_data:
