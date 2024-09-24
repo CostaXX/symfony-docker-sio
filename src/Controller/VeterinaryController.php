@@ -41,6 +41,17 @@ class VeterinaryController extends AbstractController
             'fichierImage' => '14.jpg'
         ]
     ];
+
+    private function getUnVeterinaire(int $id){
+        $lesVeterinaires = $this->lesVeterinaires;
+        foreach($lesVeterinaires as $veterinaire){
+            if($veterinaire['id'] === $id){
+                return $veterinaire;
+            }
+        }
+        return null;
+    }
+
     #[Route('/veterinary', name: 'app_veterinary_index', methods: ['GET'])]
     public function index(): Response
     {
@@ -54,7 +65,9 @@ class VeterinaryController extends AbstractController
     #[Route('/veterinary/{id}/show', name: 'app_veterinary_show', methods: ['GET'])]
     public function show(int $id): Response
     {
-
-        return new Response("<h1>SHOW Action - Véto n° $id</h1>");
+        $veto = $this->getUnVeterinaire($id);
+        return $this->render('veterinary/show.html.twig', [
+            'veto' => $veto
+        ]);
     }
 }
