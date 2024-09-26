@@ -5,7 +5,7 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
-
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 
 
@@ -47,6 +47,7 @@ class VeterinaryController extends AbstractController
         foreach($lesVeterinaires as $veterinaire){
             if($veterinaire['id'] === $id){
                 return $veterinaire;
+                break;
             }
         }
         return null;
@@ -66,6 +67,9 @@ class VeterinaryController extends AbstractController
     public function show(int $id): Response
     {
         $veto = $this->getUnVeterinaire($id);
+        if (!$veto) {
+            throw new NotFoundHttpException("Ce vétérinaire n'existe pas");
+        }
         return $this->render('veterinary/show.html.twig', [
             'veto' => $veto
         ]);

@@ -24,7 +24,7 @@
 			{% for veto in lesVetos %}
 				<tr>
 					<td>
-						<a href="">{{ veto.id }}</a>
+						<a href="{{ path('app_veterinary_show', {'id': veto.id}) }}">{{ veto.id }}</a>
 					</td>
 					<td>{{ veto.nom }}</td>
 					<td>

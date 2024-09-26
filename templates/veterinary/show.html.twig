@@ -1,5 +1,5 @@
-{% block body_id %}fiche
-{% endblock %}
+{% extends 'base.html.twig' %}
+{% block body_id %}fiche{% endblock %}
 {% block body %}
 	<h1>Fiche détail vétérinaire n°{{ veto.id }}</h1>
 	<div class=" my-3">
@@ -18,7 +18,7 @@
 		</div>
 		<ul class="liens list-unstyled mt-3">
 			<li>
-				<a href="{{ path('app_veterinary') }}">
+				<a href="{{ path('app_veterinary_index') }}">
 					<i class="bi bi-chevron-left"></i>
 					Retour à la liste
 				</a>
