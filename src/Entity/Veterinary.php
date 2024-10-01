@@ -60,6 +60,7 @@ class Veterinary
         $this->activities = new ArrayCollection();
         $this->followUps = new ArrayCollection();
         $this->goals = new ArrayCollection();
+        $this->creationDate = new \Datetime();
     }
 
     public function getId(): ?int

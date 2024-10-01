@@ -42,7 +42,7 @@ h1 {
 
 /* Détail vétérinaire */
 #fiche div.card {
-    width: 50rem !important;
+    width: 30rem !important;
 }
 @media (max-width: 576px) {
     #fiche div.card {
