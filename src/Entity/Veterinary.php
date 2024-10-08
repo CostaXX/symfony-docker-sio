@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: VeterinaryRepository::class)]
 class Veterinary
@@ -16,19 +17,38 @@ class Veterinary
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 100)]
+    #[Assert\Length(
+        min: 10,
+        max: 100,
+        minMessage: '{{ limit }} caractères minimum',
+        maxMessage: '{{ limit }} caractères maximum',
+    )]
     private ?string $name = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 50)]
+    #[Assert\Length(
+        max: 50,
+        minMessage: '{{ limit }} caractères minimum',
+        maxMessage: '{{ limit }} caractères maximum',
+    )]
     private ?string $address = null;
 
     #[ORM\Column(length: 5)]
+    #[Assert\Regex(
+        pattern: "/^(0[1-9]|[1-9][0-9])[0-9]{3}$/",
+        message: "Ce code postal n'existe pas"
+    )] 
     private ?string $postalCode = null;
 
     #[ORM\Column(length: 255)]
     private ?string $city = null;
 
     #[ORM\Column(length: 25)]
+    #[Assert\Regex(
+        pattern: '/^0[1-9](\.\d{2}){4}$/',
+        message: " le 1er chiffre est toujours,, le second chiffre n’est jamais 0"
+    )] 
     private ?string $phonep = null;
 
     #[ORM\Column(length: 100)]

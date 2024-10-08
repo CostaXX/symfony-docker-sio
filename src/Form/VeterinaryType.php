@@ -21,7 +21,9 @@ class VeterinaryType extends AbstractType
             ->add('postalCode',TextType::class, ['label' => 'Code postal'])
             ->add('city',TextType::class, ['label' => 'Ville'])
             ->add('phonep',TextType::class, ['label' => 'Téléphone'])
-            ->add('imageFileName',TextType::class, ['label' => 'Image'])
+            ->add('imageFileName',TextType::class, ['label' => 'Image', 
+                'required' => false, 
+                'empty_data' => 'default.jpg',])
             ->add('creationDate', null, [
                 'widget' => 'single_text',
             ])
