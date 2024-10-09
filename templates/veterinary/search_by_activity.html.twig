@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+{% block title %}Vétérinaires par activité
+{% endblock %}
+{% block body %}
+	<h1>Recherche de vétérinaires par activité</h1>
+	{{ form_start(form) }}
+	<div class="row my-5">
+		<div class="col-3">
+			{{ form_widget(form.activity) }}
+		</div>
+		<div class="col-2">
+			<button type="submit" class="btn btn-primary">ok</button>
+		</div>
+	</div>
+	{{ form_end(form) }}
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Nom</th>
+				<th>Adresse</th>
+				<th>CP</th>
+				<th>Ville</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for veterinary in veterinaries %}
+            <tr>
+                <td>{{ veterinary.id }}</td>
+                <td>{{ veterinary.name }}</td>
+                <td>{{ veterinary.address }}</td>
+                <td>{{ veterinary.postalCode }}</td>
+                <td>{{ veterinary.city }}</td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">no records found</td>
+            </tr>
+        {% endfor %}
+			
+		</tbody>
+	</table>
+	<ul class="liens list-unstyled mt-3">
+		<li>
+			<a href="{{ path('app_veterinary_index') }}">
+				<i class="bi bi-chevron-left"></i>
+				&nbsp;Retour à la liste
+			</a>&nbsp;&nbsp;&nbsp;
+		</li>
+	</ul>
+{% endblock %}

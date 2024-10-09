@@ -4,7 +4,8 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1"/>
 		<title>
-			{% block title %}Welcome!{% endblock %}
+			{% block title %}Welcome!
+			{% endblock %}
 		</title>
 		<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>"> {% block stylesheets %}{% endblock %}
 		{% block javascripts %}
@@ -18,7 +19,7 @@
 			<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
 				<div class="container-fluid">
 					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bstarget="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle
-											navigation">
+																		navigation">
 						<span class="navbar-toggler-icon"></span>
 					</button>
 					<div class="collapse navbar-collapse" id="navbarResponsive">
@@ -37,8 +38,30 @@
 								<a class="nav-link" href="" title="Les produits">Les produits</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="{{ path('') }}" title="Les activités">Les activités</a>
+								<a class="nav-link" href="{{ path('app_activity_index') }}" title="Les activités">Les activités</a>
 							</li>
+							<li class="nav-item dropdown">
+								<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" ariaexpanded="false">Tableau de bord</a>
+								<ul class="dropdown-menu">
+									<li>
+										<a class="dropdown-item" href="{{ path('app_dashboard_followups') }}">Nb suivis par
+											vétérinaire</a>
+									</li>
+									<li>
+										<a class="dropdown-item" href="{{ path('app_dashboard_indicators') }}">Autres indicateurs</a>
+									</li>
+								</ul>
+							</li>
+							<li class="nav-item dropdown">
+								<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" ariaexpanded="false">Divers</a>
+								<ul class="dropdown-menu">
+									<li>
+										<a class="dropdown-item" href="{{ path('app_search_by_activity') }}">Les vétérinaires par activité</a>
+									</li>
+									
+								</ul>
+							</li>
+
 						</ul>
 					</div>
 				</div>
