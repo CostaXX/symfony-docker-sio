@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Veterinary{% endblock %}
+
+{% block body %}
+<h1>Fiche produit</h1>
+<table class="table">
+        {# <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prix</th>
+                <th>Actions</th>
+            </tr>
+        </thead> #}
+        <tbody>
+            {# <tr>
+                <th>{{ product.id }}</th>
+                <td>{{ product.name }}</td>
+                <td>{{ product.price }} €</td>
+            </tr> #}
+
+            <tr>
+                <th>id</th>
+                <td>{{ product.id }}</td>
+            </tr>
+
+            <tr>
+                <th>Nom</th>
+                <td>{{ product.name }}</td>
+            </tr>
+            <tr>
+                <th>Prix</th>
+                <td>{{ product.price }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_product_index') }}">
+        <i class="bi bi-chevron-left"></i>
+        &nbsp;Retour à la liste
+    </a>
+    <a href=""><i class="bi bi-pencil-square"></i> Modifier</a>
+
+    {{ include('product/_delete_form.html.twig') }}
+
+    
+{% endblock %}

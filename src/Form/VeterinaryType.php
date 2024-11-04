@@ -2,6 +2,7 @@
 
 namespace App\Form;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use App\Entity\Activity;
 use App\Entity\Veterinary;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -18,7 +19,7 @@ class VeterinaryType extends AbstractType
         $builder
             ->add('name',TextType::class, ['label' => 'Nom'])
             ->add('address',TextType::class, ['label' => 'Adresse'])
-            ->add('postalCode',TextType::class, ['label' => 'Code postal'])
+            ->add('postalCode',NumberType::class, ['label' => 'Code postal'])
             ->add('city',TextType::class, ['label' => 'Ville'])
             ->add('phonep',TextType::class, ['label' => 'Téléphone'])
             ->add('imageFileName',TextType::class, ['label' => 'Image', 
