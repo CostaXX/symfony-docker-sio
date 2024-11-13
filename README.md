@@ -58,7 +58,7 @@ Il a été réalisé à partir du dépôt https://github.com/dunglas/symfony-doc
 
 # Principales commandes pour utiliser vos conteneurs
        
-* Pour créer/démarrer vos containers : `docker compose up -d –wait`
+* Pour créer/démarrer vos containers : `docker compose up -d --wait`
 
 * Pour arrêter vos containers : `docker compose stop`	
 
