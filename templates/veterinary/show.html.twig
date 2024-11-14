@@ -33,5 +33,7 @@
 
     <a href="{{ path('app_veterinary_edit', {'id': veterinary.id}) }}"><i class="bi bi-pencil-square"></i> edit</a>
 
+    <a href="{{ path('app_followup_showbyveterinaryid', {'id': veterinary.id}) }}"><i class="bi bi-binoculars"></i> Voir les suivis</a>
+
     {{ include('veterinary/_delete_form.html.twig') }}
 {% endblock %}

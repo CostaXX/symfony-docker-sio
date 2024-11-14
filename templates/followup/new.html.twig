@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajout suivi{% endblock %}
+
+{% block body %}
+    <h1>Ajout d’un suivi</h1>
+
+    {{ include('followup/_form.html.twig') }}
+
+    <a href="{{ path('app_followup_index') }}">
+        <i class="bi bi-chevron-left"></i>
+        &nbsp;Retour à la liste
+    </a>
+{% endblock %}

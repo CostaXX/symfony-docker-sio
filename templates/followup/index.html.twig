@@ -26,8 +26,8 @@
                 <td>{{ followup.comment }} </td>
                 <td>
                     
-                    <a href="{{ path('app_product_show', {'id': followup.id}) }}">voir</a>
-                    <a href="{{ path('app_product_edit', {'id': followup.id}) }}">éditer</a>
+                    <a href="{{ path('app_followup_show', {'id': followup.id}) }}">voir</a>
+                    <a href="{{ path('app_followup_edit', {'id': followup.id}) }}">éditer</a>
                 </td>
             </tr>
         {% else %}
