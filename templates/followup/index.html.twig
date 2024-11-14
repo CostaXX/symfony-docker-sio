@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Suivi{% endblock %}
+
+{% block body %}
+<h1>Suivi des vétérinaires</h1>
+    <a href="{{ path('app_followup_new') }}" class='btn btn-primary'><i class="bi bi-plus"></i> Nouveau</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Vétérinaire</th>
+                <th>Nom du contact</th>
+                <th>Date de l'appel</th>
+                <th>Commentaires</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for followup in followups %}
+            <tr>
+                <td>{{ followup.id }}</td>
+                <td>{{ followup.name }}</td>
+                <td>{{ followup.contactName }} </td>
+                <td>{{ followup.callDate ? followup.callDate|date('d/m/Y') : '' }} </td>
+                <td>{{ followup.comment }} </td>
+                <td>
+                    
+                    <a href="{{ path('app_product_show', {'id': followup.id}) }}">voir</a>
+                    <a href="{{ path('app_product_edit', {'id': followup.id}) }}">éditer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
