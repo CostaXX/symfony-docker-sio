@@ -67,10 +67,14 @@ class FollowupController extends AbstractController
         ]);
     }
 
-    #[Route('/veterinary/{id}', name:'app_followup_showbyveterinaryid', methods: ['GET'], requirements: ['id' => '\d+'])]
-    public function showByVeterinaryId(FollowUp $followup): Response
+    #[Route('/veterinary/{veterinaryId}', name:'app_followup_showbyveterinaryid', methods: ['GET'], requirements: ['veterinaryId' => '\d+'])]
+    public function showByVeterinaryId(int $veterinaryId, RepositoryFollowUpRepository $followUpRepository): Response
     {
-        
+        $followup = $followUpRepository->GetFollowUpByVeterinaryId($veterinaryId);
+        return $this->render('followup/showbyveterinaryid.html.twig', [
+            'followups' => $followup,
+            'veterinaryId' => $veterinaryId
+        ]);
     }
 
     #[Route('/{id}', name: 'app_followup_delete', methods: ['POST'])]

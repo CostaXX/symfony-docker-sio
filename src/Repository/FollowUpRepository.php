@@ -35,13 +35,19 @@ class FollowUpRepository extends ServiceEntityRepository
            ;
        }
 
-    //    public function findOneBySomeField($value): ?FollowUp
-    //    {
-    //        return $this->createQueryBuilder('f')
-    //            ->andWhere('f.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->getQuery()
-    //            ->getOneOrNullResult()
-    //        ;
-    //    }
+       public function GetFollowUpByVeterinaryId($veterinaryId): array
+       {
+           return $this->createQueryBuilder('f')
+               ->leftJoin('f.veterinary','v')
+               ->select('f.id')
+               ->addSelect('v.name')
+               ->addSelect('f.contactName')
+               ->addSelect('f.comment')
+               ->addSelect('f.callDate')
+               ->andWhere('f.veterinary = :val')
+               ->setParameter('val', $veterinaryId)
+               ->getQuery()
+               ->getResult()
+           ;
+       }
 }
