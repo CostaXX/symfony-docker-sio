@@ -19,17 +19,21 @@ class GoalRepository extends ServiceEntityRepository
        /**
         * @return Goal[] Returns an array of Goal objects
         */
-    //    public function findByExampleField($value): array
-    //    {
-    //        return $this->createQueryBuilder('g')
-    //            ->andWhere('g.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->orderBy('g.id', 'ASC')
-    //            ->setMaxResults(10)
-    //            ->getQuery()
-    //            ->getResult()
-    //        ;
-    //    }
+       public function findByVeterinary($value): array
+       {
+           return $this->createQueryBuilder('g')
+               ->leftJoin('g.veterinary', 'v')
+               ->leftJoin('g.product', 'p')
+               ->select('v.name')
+               ->addSelect('g.id')
+               ->addSelect('g.amount')
+               ->addSelect('p.name')
+               ->andWhere('g.veterinary = :val')
+               ->setParameter('val', $value.get)
+               ->getQuery()
+               ->getResult()
+           ;
+       }
 
     //    public function findOneBySomeField($value): ?Goal
     //    {

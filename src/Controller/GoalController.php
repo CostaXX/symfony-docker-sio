@@ -2,8 +2,11 @@
 
 namespace App\Controller;
 
+use App\Entity\Veterinary;
+use App\Form\VeterinarySelectType;
 use App\Entity\Goal;
 use App\Form\GoalType;
+use App\Repository\VeterinaryRepository;
 use App\Repository\GoalRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -14,11 +17,31 @@ use Symfony\Component\Routing\Attribute\Route;
 #[Route('/goal')]
 final class GoalController extends AbstractController
 {
-    #[Route(name: 'app_goal_index', methods: ['GET'])]
-    public function index(GoalRepository $goalRepository): Response
+    
+    #[Route(name: 'app_goal_index', methods: ['GET', 'POST'])]
+    public function index(Request $request,GoalRepository $goalRepository): Response
     {
+        // Par défaut, la liste des objectifs contient tous les objectifs
+        $goals = $goalRepository->findAll();
+        // On crée un objet veterinary pour interagir avec le formulaire
+        $veterinary = new Veterinary();
+        // On crée un formulaire basé sur la classe formulaire créée précédemment
+        $form = $this->createForm(VeterinarySelectType::class);
+        // Récupère les données dans la superglobale adéquate ($_POST ou $_GET)
+        $form->handleRequest($request);
+        // Le formulaire est soumis et valide
+        if ($form->isSubmitted() && $form->isValid()) {
+            // On récupère les données du formulaire
+            $data = $form->getData();
+            $veterinary = $data['veterinary'];
+            // Si une catégorie est sélectionnée, on récupère la liste des vétérinaires concernés
+            if (!is_null($veterinary)) {
+                $goals = $goalRepository->findByVeterinary($veterinary);
+            }
+        }
         return $this->render('goal/index.html.twig', [
-            'goals' => $goalRepository->findAll(),
+            'goals' => $goals,
+            'form' => $form,
         ]);
     }
 
