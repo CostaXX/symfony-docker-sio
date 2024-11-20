@@ -19,17 +19,11 @@ class GoalRepository extends ServiceEntityRepository
        /**
         * @return Goal[] Returns an array of Goal objects
         */
-       public function findByVeterinary($value): array
+       public function findByVeterinary($veterinary): array
        {
            return $this->createQueryBuilder('g')
-               ->leftJoin('g.veterinary', 'v')
-               ->leftJoin('g.product', 'p')
-               ->select('v.name')
-               ->addSelect('g.id')
-               ->addSelect('g.amount')
-               ->addSelect('p.name')
-               ->andWhere('g.veterinary = :val')
-               ->setParameter('val', $value.get)
+               ->andWhere('g.veterinary = :veterinary')
+               ->setParameter('veterinary', $veterinary->getid())
                ->getQuery()
                ->getResult()
            ;
