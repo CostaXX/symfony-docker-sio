@@ -24,7 +24,7 @@ class FollowupType extends AbstractType
             ])
             ->add('veterinary', EntityType::class, [
                 'class' => Veterinary::class,
-                'choice_label' => 'id',
+                'choice_label' => 'name',
                 'label' => 'Véterinaire'
             ])
         ;

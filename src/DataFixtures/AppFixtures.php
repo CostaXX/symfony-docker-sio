@@ -20,6 +20,7 @@ class AppFixtures extends Fixture
         $djourMoins20jours = (new \Datetime())->sub(new \DateInterval('P20D'));
         $djourMoins15jours = (new \Datetime())->sub(new \DateInterval('P15D'));
         $djourMoins5jours = (new \Datetime())->sub(new \DateInterval('P5D'));
+        $anneeCourante = \date("Y");
 
         //region Les activités
         $activite1 = new Activity();
@@ -244,126 +245,203 @@ class AppFixtures extends Fixture
         $objectif->setVeterinary($veto1);
         $objectif->setProduct($produit1);
         $objectif->setAmount(500);
+        $objectif->setYear($anneeCourante);
         $manager->persist($objectif);
 
+        $objectif = new Goal();
+        $objectif->setVeterinary($veto1);
+        $objectif->setProduct($produit1);
+        $objectif->setAmount(450);
+        $objectif->setYear($anneeCourante-1);
+        $manager->persist($objectif);
+        
+        $objectif = new Goal();
+        $objectif->setVeterinary($veto1);
+        $objectif->setProduct($produit1);
+        $objectif->setAmount(400);
+        $objectif->setYear($anneeCourante-2);
+        $manager->persist($objectif);
+        
         $objectif = new Goal();
         $objectif->setVeterinary($veto1);
         $objectif->setProduct($produit7);
         $objectif->setAmount(1000);
+        $objectif->setYear($anneeCourante);
         $manager->persist($objectif);
-
+        
         $objectif = new Goal();
         $objectif->setVeterinary($veto1);
         $objectif->setProduct($produit3);
         $objectif->setAmount(500);
+        $objectif->setYear($anneeCourante);
         $manager->persist($objectif);
-
+        
         $objectif = new Goal();
         $objectif->setVeterinary($veto1);
         $objectif->setProduct($produit8);
         $objectif->setAmount(800);
+        $objectif->setYear($anneeCourante);
         $manager->persist($objectif);
-
+        
         $objectif = new Goal();
         $objectif->setVeterinary($veto1);
         $objectif->setProduct($produit12);
         $objectif->setAmount(500);
+        $objectif->setYear($anneeCourante);
         $manager->persist($objectif);
-
+        
         $objectif = new Goal();
         $objectif->setVeterinary($veto1);
         $objectif->setProduct($produit9);
         $objectif->setAmount(1500);
+        $objectif->setYear($anneeCourante);
         $manager->persist($objectif);
-
+        
         $objectif = new Goal();
         $objectif->setVeterinary($veto2);
         $objectif->setProduct($produit1);
         $objectif->setAmount(800);
+        $objectif->setYear($anneeCourante);
         $manager->persist($objectif);
-
+        
         $objectif = new Goal();
         $objectif->setVeterinary($veto2);
         $objectif->setProduct($produit2);
         $objectif->setAmount(520);
+        $objectif->setYear($anneeCourante);
         $manager->persist($objectif);
-
+        
+        $objectif = new Goal();
+        $objectif->setVeterinary($veto2);
+        $objectif->setProduct($produit2);
+        $objectif->setAmount(500);
+        $objectif->setYear($anneeCourante-1);
+        $manager->persist($objectif);
+        
+        $objectif = new Goal();
+        $objectif->setVeterinary($veto2);
+        $objectif->setProduct($produit2);
+        $objectif->setAmount(400);
+        $objectif->setYear($anneeCourante -2);
+        $manager->persist($objectif);
+        
         $objectif = new Goal();
         $objectif->setVeterinary($veto2);
         $objectif->setProduct($produit3);
         $objectif->setAmount(520);
+        $objectif->setYear($anneeCourante);
         $manager->persist($objectif);
-
+        
         $objectif = new Goal();
         $objectif->setVeterinary($veto2);
         $objectif->setProduct($produit5);
         $objectif->setAmount(1000);
+        $objectif->setYear($anneeCourante);
         $manager->persist($objectif);
-
+        
         $objectif = new Goal();
         $objectif->setVeterinary($veto2);
         $objectif->setProduct($produit12);
         $objectif->setAmount(800);
+        $objectif->setYear($anneeCourante);
         $manager->persist($objectif);
-
+        
         $objectif = new Goal();
         $objectif->setVeterinary($veto5);
         $objectif->setProduct($produit1);
         $objectif->setAmount(700);
+        $objectif->setYear($anneeCourante);
+        $manager->persist($objectif);
+        
+        $objectif = new Goal();
+        $objectif->setVeterinary($veto5);
+        $objectif->setProduct($produit2);
+        $objectif->setAmount(1800);
+        $objectif->setYear($anneeCourante);
         $manager->persist($objectif);
 
         $objectif = new Goal();
         $objectif->setVeterinary($veto5);
         $objectif->setProduct($produit2);
-        $objectif->setAmount(1800);
+        $objectif->setAmount(1600);
+        $objectif->setYear($anneeCourante-1);
         $manager->persist($objectif);
-
+        
+        $objectif = new Goal();
+        $objectif->setVeterinary($veto5);
+        $objectif->setProduct($produit2);
+        $objectif->setAmount(1500);
+        $objectif->setYear($anneeCourante-2);
+        $manager->persist($objectif);
+        
         $objectif = new Goal();
         $objectif->setVeterinary($veto5);
         $objectif->setProduct($produit3);
         $objectif->setAmount(520);
+        $objectif->setYear($anneeCourante);
         $manager->persist($objectif);
-
+        
         $objectif = new Goal();
         $objectif->setVeterinary($veto5);
         $objectif->setProduct($produit5);
         $objectif->setAmount(1000);
+        $objectif->setYear($anneeCourante);
         $manager->persist($objectif);
-
+        
         $objectif = new Goal();
         $objectif->setVeterinary($veto5);
         $objectif->setProduct($produit7);
         $objectif->setAmount(300);
+        $objectif->setYear($anneeCourante);
         $manager->persist($objectif);
-
+        
         $objectif = new Goal();
         $objectif->setVeterinary($veto5);
         $objectif->setProduct($produit8);
         $objectif->setAmount(200);
+        $objectif->setYear($anneeCourante);
         $manager->persist($objectif);
-
+        
         $objectif = new Goal();
         $objectif->setVeterinary($veto6);
         $objectif->setProduct($produit1);
         $objectif->setAmount(350);
+        $objectif->setYear($anneeCourante);
         $manager->persist($objectif);
-
+        
         $objectif = new Goal();
         $objectif->setVeterinary($veto6);
         $objectif->setProduct($produit7);
         $objectif->setAmount(700);
+        $objectif->setYear($anneeCourante);
         $manager->persist($objectif);
-
+        
+        $objectif = new Goal();
+        $objectif->setVeterinary($veto6);
+        $objectif->setProduct($produit7);
+        $objectif->setAmount(650);
+        $objectif->setYear($anneeCourante-1);
+        $manager->persist($objectif);
+        
+        $objectif = new Goal();
+        $objectif->setVeterinary($veto6);
+        $objectif->setProduct($produit7);
+        $objectif->setAmount(600);
+        $objectif->setYear($anneeCourante-2);
+        $manager->persist($objectif);
+        
         $objectif = new Goal();
         $objectif->setVeterinary($veto6);
         $objectif->setProduct($produit3);
         $objectif->setAmount(200);
+        $objectif->setYear($anneeCourante);
         $manager->persist($objectif);
-
+        
         $objectif = new Goal();
         $objectif->setVeterinary($veto6);
         $objectif->setProduct($produit8);
         $objectif->setAmount(400);
+        $objectif->setYear($anneeCourante);
         $manager->persist($objectif);
         //endregion
 

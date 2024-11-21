@@ -11,16 +11,30 @@
                 <th>Id</th>
                 <td>{{ goal.id }}</td>
             </tr>
+            
             <tr>
-                <th>Amount</th>
-                <td>{{ goal.amount }}</td>
+                <th>Veterinaire</th>
+                <td>{{ goal.veterinary.name }}<br>{{ goal.veterinary.address }}<br>{{ goal.veterinary.postalCode }} {{ goal.veterinary.city }}</td>
+            </tr>
+            
+            <tr>
+                <th>Produit</th>
+                <td>{{ goal.product.name }}</td>
+            </tr>
+
+            <tr>
+                <th>Montant objectif</th>
+                <td>{{ goal.amount }} €</td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('app_goal_index') }}">back to list</a>
+    <a href="{{ path('app_goal_index') }}">
+        <i class="bi bi-chevron-left"></i>
+        &nbsp;Retour à la liste
+    </a>
 
-    <a href="{{ path('app_goal_edit', {'id': goal.id}) }}">edit</a>
+    <a href="{{ path('app_goal_edit', {'id': goal.id}) }}"><i class="bi bi-pencil-square"></i> éditer</a>
 
     {{ include('goal/_delete_form.html.twig') }}
 {% endblock %}

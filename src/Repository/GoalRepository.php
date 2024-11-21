@@ -29,13 +29,17 @@ class GoalRepository extends ServiceEntityRepository
            ;
        }
 
-    //    public function findOneBySomeField($value): ?Goal
-    //    {
-    //        return $this->createQueryBuilder('g')
-    //            ->andWhere('g.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->getQuery()
-    //            ->getOneOrNullResult()
-    //        ;
-    //    }
+       /** 
+        * 
+        **/
+
+       public function findByYear($value): ?Goal
+       {
+           return $this->createQueryBuilder('g')
+               ->andWhere('g.exampleField = :val')
+               ->setParameter('val', $value)
+               ->getQuery()
+               ->getOneOrNullResult()
+           ;
+       }
 }

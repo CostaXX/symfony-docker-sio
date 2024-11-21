@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20240926094854 extends AbstractMigration
+final class Version20241121104023 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -20,12 +20,14 @@ final class Version20240926094854 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('CREATE UNIQUE INDEX UQ_Goal ON goal (veterinary_id, product_id)');
+        $this->addSql('DROP INDEX UQ_Goal ON goal');
+        $this->addSql('CREATE UNIQUE INDEX UQ_Goal ON goal (veterinary_id, product_id, year)');
     }
 
     public function down(Schema $schema): void
     {
         // this down() migration is auto-generated, please modify it to your needs
         $this->addSql('DROP INDEX UQ_Goal ON goal');
+        $this->addSql('CREATE UNIQUE INDEX UQ_Goal ON goal (veterinary_id, product_id)');
     }
 }

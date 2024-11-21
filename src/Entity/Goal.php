@@ -9,12 +9,12 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 #[ORM\Entity(repositoryClass: GoalRepository::class)]
 
-#[ORM\UniqueConstraint(name: "UQ_Goal", columns: ['veterinary_id', 'product_id'])]
+#[ORM\UniqueConstraint(name: "UQ_Goal", columns: ['veterinary_id', 'product_id', 'year'])]
 
 #[UniqueEntity(
-    fields: ['veterinary', 'product'],
+    fields: ['veterinary', 'product','year'],
     errorPath: 'product',
-    message: 'Un objectif est déjà défini pour ce produit',
+    message: 'Un objectif est déjà défini pour ce produit et cette année',
 )]
 class Goal
 {
@@ -35,6 +35,9 @@ class Goal
     #[ORM\ManyToOne(inversedBy: 'goals')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Veterinary $veterinary = null;
+
+    #[ORM\Column]
+    private ?int $year = null;
 
     public function getId(): ?int
     {
@@ -76,4 +79,17 @@ class Goal
 
         return $this;
     }
+
+    public function getYear(): ?int
+    {
+        return $this->year;
+    }
+
+    public function setYear(int $year): static
+    {
+        $this->year = $year;
+
+        return $this;
+    }
+
 }

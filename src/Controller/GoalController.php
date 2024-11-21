@@ -65,11 +65,11 @@ final class GoalController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_goal_show', methods: ['GET'])]
+    #[Route('/{id}', name: 'app_goal_show', methods: ['GET'], requirements: ['id' => '\d+'])]
     public function show(Goal $goal): Response
     {
         return $this->render('goal/show.html.twig', [
-            'goal' => $goal,
+            'goal' => $goal
         ]);
     }
 
