@@ -3,6 +3,7 @@
 namespace App\Form;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Doctrine\DBAL\Types\IntegerType;
 use App\Entity\Activity;
 use App\Entity\Veterinary;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;

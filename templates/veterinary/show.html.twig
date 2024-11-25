@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Veterinary{% endblock %}
+{% block title %}veterinaire{% endblock %}
 
 {% block body %}
     <h1>Fiche détail vétérinaire n°{{veterinary.id}}</h1>
@@ -29,7 +29,7 @@
 		
 	</div>
 
-    <a href="{{ path('app_veterinary_index') }}"><i class="bi bi-chevron-left"></i> Retour à la liste</a>
+    <a href="{{ path('app_veterinary_index') }}"><i class="bi bi-chevron-left"></i>&nbsp; Retour à la liste</a>
 
     <a href="{{ path('app_veterinary_edit', {'id': veterinary.id}) }}"><i class="bi bi-pencil-square"></i> edit</a>
 

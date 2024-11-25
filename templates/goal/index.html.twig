@@ -5,7 +5,7 @@
 {% block body %}
     <h1>Liste des objectifs fixés aux vétérinaires</h1>
     <a href="{{ path('app_goal_new') }}" class='btn btn-primary'><i class="bi bi-plus"></i> Nouveau</a>
-    {{ form_start(form) }}
+    {# {{ form_start(form) }}
 	<div class="row my-5 align-items-center">
 		<div class="col-8">
 			{{ form_widget(form.veterinary) }}
@@ -14,6 +14,20 @@
 			<button type="submit" class="btn btn-primary">ok</button>
 		</div>
 	</div>
+	{{ form_end(form) }} #}
+    
+    {{ form_start(form) }}
+	<div class="row">
+        <div class="col-6">
+            {{ form_row(form.veterinary) }}
+        </div>
+        <div class="col-4">
+            {{ form_row(form.year) }}
+        </div>
+        <div class="col-2">
+            <button type="submit" class="btn btn-primary">ok</button>
+        </div>
+    </div>
 	{{ form_end(form) }}
     <table class="table">
         <thead>
@@ -22,6 +36,7 @@
                 <th>Vétérinaires</th>
                 <th>Produit</th>
                 <th>Montant</th>
+                <th>Année</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -32,6 +47,7 @@
                 <td>{{ goal.veterinary.name }}</td>
                 <td>{{ goal.product.name }}</td>
                 <td>{{ goal.amount }}</td>
+                <td>{{ goal.year }}</td>
                 <td>
                     <a href="{{ path('app_goal_show', {'id': goal.id}) }}">voir</a>
                     <a href="{{ path('app_goal_edit', {'id': goal.id}) }}">éditer</a>
@@ -39,7 +55,7 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="3">no records found</td>
+                <td colspan="3">Aucun objectifs trouver</td>
             </tr>
         {% endfor %}
         </tbody>

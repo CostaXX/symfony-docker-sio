@@ -5,6 +5,8 @@ namespace App\Form;
 use App\Entity\Goal;
 use App\Entity\Product;
 use App\Entity\Veterinary;
+use Doctrine\DBAL\Types\DateType;
+use Doctrine\DBAL\Types\IntegerType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\AbstractType;
