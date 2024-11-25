@@ -28,6 +28,9 @@ class Product
     #[ORM\OneToMany(targetEntity: Goal::class, mappedBy: 'product')]
     private Collection $goals;
 
+    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    private ?\DateTimeInterface $date = null;
+
     public function __construct()
     {
         $this->goals = new ArrayCollection();
@@ -88,6 +91,18 @@ class Product
                 $goal->setProduct(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getDate(): ?\DateTimeInterface
+    {
+        return $this->date;
+    }
+
+    public function setDate(\DateTimeInterface $date): static
+    {
+        $this->date = $date;
 
         return $this;
     }
