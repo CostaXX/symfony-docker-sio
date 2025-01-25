@@ -28,7 +28,9 @@ class ProductController extends AbstractController
         $form = $this->createForm(ProductType::class, $product);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) { 
+            $product->setDate(new \DateTime());  // Définir la date d'aujourd'hui
+            
             $entityManager->flush();
 
             return $this->redirectToRoute('app_product_index', [], Response::HTTP_SEE_OTHER);
@@ -63,8 +65,10 @@ class ProductController extends AbstractController
     #[Route('/{id}', name: 'app_product_show', methods: ['GET'], requirements: ['id' => '\d+'])]
     public function show(Product $product):Response
     {
+        $dateMaj = $product->getDate()->format('d/m/Y');
         return $this->render('product/show.html.twig', [
             'product' => $product,
+            'dateMaj' => $dateMaj
         ]);
     }
 

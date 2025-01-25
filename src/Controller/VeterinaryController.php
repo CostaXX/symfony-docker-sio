@@ -3,8 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Activity;
+use App\Entity\Category;
 use App\Form\ActivitySelectType;
 use App\Entity\Veterinary;
+use App\Form\CategorySelectType;
 use App\Form\VeterinaryType;
 use App\Repository\VeterinaryRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -104,6 +106,27 @@ class VeterinaryController extends AbstractController
             }
         }
         return $this->render('veterinary/search_by_activity.html.twig', [
+            'veterinaries' => $veterinaries,
+            'form' => $form,
+        ]);
+    }
+
+    #[Route('/search_by_category ', name: 'app_search_by_category', methods: ['GET', 'POST'])]
+    public function searchByCategory(Request $request, VeterinaryRepository $veterinaryRepository): Response
+    {
+        $veterinaries = $veterinaryRepository->findAll();
+        $category = new Category();
+        $form = $this->createForm(CategorySelectType::class);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()){
+            $data = $form->getData();
+
+            $category = $data['category'];
+            if(!is_null($category)){
+                $veterinaries = $veterinaryRepository->findByCategory($category);
+            }
+        }
+        return $this->render('veterinary/search_by_category.html.twig', [
             'veterinaries' => $veterinaries,
             'form' => $form,
         ]);

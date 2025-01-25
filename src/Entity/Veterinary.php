@@ -75,6 +75,11 @@ class Veterinary
     #[ORM\OneToMany(targetEntity: Goal::class, mappedBy: 'veterinary')]
     private Collection $goals;
 
+    #[ORM\ManyToOne(targetEntity: Category::class, inversedBy: 'veterinaries')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Category $category = null;
+
+
     public function __construct()
     {
         $this->activities = new ArrayCollection();
@@ -255,4 +260,17 @@ class Veterinary
 
         return $this;
     }
+
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Category $category): static
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+    
 }

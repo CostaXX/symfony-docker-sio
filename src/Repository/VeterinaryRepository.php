@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Veterinary;
 use App\Entity\Activity;
+use App\Entity\Category;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Doctrine\ORM\Query;
@@ -47,6 +48,15 @@ class VeterinaryRepository extends ServiceEntityRepository
             ->innerJoin('v.activities', 'a')
             ->where('a.id = :idActivity')
             ->setParameter('idActivity', $activity->getId())
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findByCategory(Category $category){
+        return $this->createQueryBuilder('v')
+            ->innerJoin('v.category', 'c')
+            ->where('c.id = :idCategory')
+            ->setParameter('idCategory', $category->getId())
             ->getQuery()
             ->getResult();
     }
