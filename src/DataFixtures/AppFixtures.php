@@ -11,6 +11,7 @@ use App\Entity\Goal;
 use App\Entity\Product;
 use App\Entity\Veterinary;
 use App\Entity\Category;
+use App\Entity\User;
 
 class AppFixtures extends Fixture
 {
@@ -589,7 +590,30 @@ class AppFixtures extends Fixture
 
         //endregion
 
+        //region Les utilisateurs
+
+        $utilisateur = new User();
+        $utilisateur->setUsername('constantin');
+        $utilisateur->setRoles(['ROLE_USER']);
+        $utilisateur->setPassword('azerty');
+        $manager->persist($utilisateur);
+
+        $utilisateur = new User();
+        $utilisateur->setUsername('michael');
+        $utilisateur->setRoles(['ROLE_ADMIN']);
+        $utilisateur->setPassword('azerty');
+        $manager->persist($utilisateur);
+
+        $utilisateur = new User();
+        $utilisateur->setUsername('nicolas');
+        $utilisateur->setRoles(['ROLE_MANAGER']);
+        $utilisateur->setPassword('azerty');
+        $manager->persist($utilisateur);
+
+        // endregion
+
 
         $manager->flush();
     }
 }
+

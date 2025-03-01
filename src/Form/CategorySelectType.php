@@ -2,11 +2,11 @@
 
 namespace App\Form;
 
-use App\Entity\Category;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use App\Entity\Category;
 
 class CategorySelectType extends AbstractType
 {
@@ -18,7 +18,7 @@ class CategorySelectType extends AbstractType
                 'choice_label' => 'name',
                 'multiple' => false,
                 'label' => 'Catégorie',
-                'placeholder' => 'Choisissez une catégorie'
+                'placeholder' => 'Choisissez une catégorie',
             ])
         ;
     }
@@ -26,7 +26,7 @@ class CategorySelectType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Category::class,
+            // Configure your form options here
         ]);
     }
 }
