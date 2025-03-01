@@ -4,7 +4,7 @@ namespace App\DataFixtures;
 
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
-
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use App\Entity\Activity;
 use App\Entity\FollowUp;
 use App\Entity\Goal;
@@ -15,6 +15,14 @@ use App\Entity\User;
 
 class AppFixtures extends Fixture
 {
+
+    private UserPasswordHasherInterface $passwordHasher;
+
+    public function __construct(UserPasswordHasherInterface $passwordHasher)
+    {
+        $this->passwordHasher = $passwordHasher;
+    }
+
     public function load(ObjectManager $manager): void
     {
         $djourMoins45jours = (new \Datetime())->sub(new \DateInterval('P45D'));
@@ -592,23 +600,26 @@ class AppFixtures extends Fixture
 
         //region Les utilisateurs
 
-        $utilisateur = new User();
-        $utilisateur->setUsername('constantin');
-        $utilisateur->setRoles(['ROLE_USER']);
-        $utilisateur->setPassword('azerty');
-        $manager->persist($utilisateur);
+        $utilisateur1 = new User();
+        $utilisateur1->setUsername('constantin');
+        $utilisateur1->setRoles(['ROLE_USER']);
+        $hashedPassword1 = $this->passwordHasher->hashPassword($utilisateur1, 'azerty');
+        $utilisateur1->setPassword($hashedPassword1);
+        $manager->persist($utilisateur1);
 
-        $utilisateur = new User();
-        $utilisateur->setUsername('michael');
-        $utilisateur->setRoles(['ROLE_ADMIN']);
-        $utilisateur->setPassword('azerty');
-        $manager->persist($utilisateur);
+        $utilisateur2 = new User();
+        $utilisateur2->setUsername('michael');
+        $utilisateur2->setRoles(['ROLE_ADMIN']);
+        $hashedPassword2 = $this->passwordHasher->hashPassword($utilisateur2, 'azerty');
+        $utilisateur2->setPassword($hashedPassword2);
+        $manager->persist($utilisateur2);
 
-        $utilisateur = new User();
-        $utilisateur->setUsername('nicolas');
-        $utilisateur->setRoles(['ROLE_MANAGER']);
-        $utilisateur->setPassword('azerty');
-        $manager->persist($utilisateur);
+        $utilisateur3 = new User();
+        $utilisateur3->setUsername('nicolas');
+        $utilisateur3->setRoles(['ROLE_MANAGER']);
+        $hashedPassword3 = $this->passwordHasher->hashPassword($utilisateur3, 'azerty');
+        $utilisateur3->setPassword($hashedPassword3);
+        $manager->persist($utilisateur3);
 
         // endregion
 

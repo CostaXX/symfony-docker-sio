@@ -16,13 +16,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 180)]
+    #[ORM\Column(length: 180, unique: true)]
     private ?string $username = null;
 
     /**
      * @var list<string> The user roles
      */
-    #[ORM\Column(type: 'json')]
+    #[ORM\Column]
     private array $roles = [];
 
     /**
